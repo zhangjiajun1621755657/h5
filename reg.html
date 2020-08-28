@@ -1,47 +1,71 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
-		<link rel="stylesheet" type="text/css" href="css/csst9402.css"/>
-	</head>
-	<body>
-		<div class="header">
-			<a href="javascript:history.back();"><i class="iconfont">&#xe697;</i></a>
-			<h4>注册</h4>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>注册</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="/css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/csst9402.css"/>
+</head>
+<body>
+<div class="header">
+	<a href="javascript:history.back();"><i class="iconfont">&#xe697;</i></a>
+	<h4>注册</h4>
+</div>
+<div class="login">
+	<div class="login-top">
+		<p class="clwzhzc">若已有账号<a href="login.html">立即登录</a></p>
+	</div>
+	<div class="login-nr">
+		<div class="login-nr-inp">
+			<input type="text" name="u_name" id="u_name" value="" placeholder="请输入用户名" />
 		</div>
-		<div class="login">
-			<div class="login-top">
-				<p class="clwzhzc">若已有账号<a href="login.html">立即登录</a></p>
-			</div>
-			<div class="login-nr">
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入用户名" />
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入手机号" />
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入验证码" />
-					<p class="yzm">1258</p>
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="短信验证码" />
-					<p class="yzm2">获取验证码</p>
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入注册密码" />
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入上属店铺" />
-				</div>
-			</div>
+		<div class="login-nr-inp">
+			<input type="text" name="u_mobile" id="u_mobile" value="" placeholder="请输入手机号" />
 		</div>
-		<div class="login-nr-dl">
-			<input type="button" name="" id="" value="注册"  />
+		<!--div class="login-nr-inp">
+            <input type="text" name="" id="code" value="" placeholder="请输入验证码" />
+            <p class="yzm">1258</p>
+        </div-->
+		<div class="login-nr-inp">
+			<input type="text" name="sms_code" id="sms_code" value="" placeholder="短信验证码" />
+			<p class="yzm2">获取验证码</p>
 		</div>
-		<div style="height: 4em;"></div>
-	</body>
+		<div class="login-nr-inp">
+			<input type="password" name="pass1" id="pass1" value="" placeholder="请输入注册密码" />
+		</div>
+		<div class="login-nr-inp">
+			<input type="password" name="pass2" id="pass2" value="" placeholder="请输入确认密码" />
+		</div>
+	</div>
+</div>
+<div class="login-nr-dl">
+	<input type="button" name="" id="btn_reg" value="注册"  />
+</div>
+<div style="height: 4em;"></div>
+
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script>
+	//点击注册
+	$("#btn_reg").on('click',function(){
+		var u_name = $("#u_name").val();
+		var u_mobile = $("#u_mobile").val();
+		var sms_code = $("#sms_code").val();
+		var pass1 = $("#pass1").val();
+		var pass2 = $("#pass2").val();
+
+		$.ajax({
+			url: 'http://api2.1910.com/user/reg',
+			data: {u_name:u_name,u_mobile:u_mobile,sms_code:sms_code,pass1:pass1,pass2:pass2},
+			type: 'post',
+			dataType: 'json',
+			success: function(d){
+				console.log(d);
+			}
+		});
+	});
+
+</script>
+
+</body>
 </html>

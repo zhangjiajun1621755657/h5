@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="css/csst9402.css"/>
-	</head>
-	<body>
-		<div class="login">
-			<div class="login-top">
-				<p class="dlu">登录</p>
-				<p class="clwzhzc">若无账号<a href="注册.html">立即注册</a></p>
-			</div>
-			<div class="login-nr">
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入用户名/手机号" />
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入登录密码" />
-				</div>
-				<div class="login-nr-inp">
-					<input type="text" name="" id="" value="" placeholder="请输入验证码" />
-					<p class="yzm">1258</p>
-				</div>
-				<div class="wjmm"><a href="忘记密码.html">忘记密码</a></div>
-			</div>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="/css/csst9402.css"/>
+</head>
+<body>
+<div class="login">
+	<div class="login-top">
+		<p class="dlu">登录</p>
+		<p class="clwzhzc">若无账号<a href="/reg.html">立即注册</a></p>
+	</div>
+	<div class="login-nr">
+		<div class="login-nr-inp">
+			<input type="text" name="u_name" id="u_name" value="" placeholder="请输入用户名/手机号" />
 		</div>
-		<div class="login-nr-dl">
-			<input type="button" name="" id="" value="登录"  />
+		<div class="login-nr-inp">
+			<input type="text" name=pass"" id="pass" value="" placeholder="请输入登录密码" />
 		</div>
-		<div style="height: 4em;"></div>
-	</body>
+		<div class="login-nr-inp">
+			<input type="text" name="code" id="code" value="" placeholder="请输入验证码" />
+			<p class="yzm">1258</p>
+		</div>
+		<div class="wjmm"><a href="/forget.html">忘记密码</a></div>
+	</div>
+</div>
+<div class="login-nr-dl">
+	<input type="button" name="" id="btn_login" value="登录"  />
+</div>
+<div style="height: 4em;"></div>
+
+<script src="/js/jquery-3.5.1.min.js"></script>
+
+<script>
+	//点击登录
+	$("#btn_login").on('click',function(){
+		var u_name = $("#u_name").val();
+		var pass = $("#pass").val();
+		var code = $("#code").val();
+
+		$.ajax({
+			url: 'http://api2.1910.com/user/login',
+			data: {u_name:u_name,code:code,pass:pass},
+			type: 'post',
+			dataType: 'json',
+			success: function(d){
+				console.log(d);
+			}
+		});
+	});
+</script>
+</body>
 </html>
